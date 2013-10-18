@@ -43,6 +43,9 @@ if (Meteor.isClient) {
     },
     'change #contactOn': function(event, context) {
       People.update(context.data._id,{$set: {contactOn: event.target.value}});
+    },
+    'click #remove_me': function(event, context) {
+      People.remove(context.data._id);
     }
   });
 
@@ -73,5 +76,6 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+    //set up authentication service
   });
 }
