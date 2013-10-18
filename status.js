@@ -9,7 +9,8 @@ app.addCurrentUser = function() {
     first_name: user_info.given_name,
     last_name: user_info.family_name,
     avatar_url: user_info.picture,
-    status: 'online'
+    status: 'Online',
+    contactOn: 'Hipchat'
   };
   People.insert(data);
 }

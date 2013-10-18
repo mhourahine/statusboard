@@ -30,7 +30,7 @@
 			{{#if avatar_url}}
 				<img class="img-circle" src="{{avatar_url}}" />
 			{{else}}
-				<img class="img-circle" data-src="holder.js/100x100" >
+				<img class="img-circle" src="images/no-image.png" >
 			{{/if}}
 		</div>
 		<p class="name"><strong>{{first_name}}</strong></p> 
@@ -51,11 +51,11 @@
 				<p>
 					<label class="inline" for="contactOn">Hit me up on:</label>
 					<select class="input-mini" id="contactOn">
-						<option>Hipchat</option>
-						<option>Skype</option>
-						<option>Email</option>
-						<option>iMessage</option>
-						<option>SMS</option>
+						<option{{selected status 'Hipchat'}}>Hipchat</option>
+						<option{{selected status 'Skype'}}>Skype</option>
+						<option{{selected status 'Email'}}>Email</option>
+						<option{{selected status 'iMessage'}}>iMessage</option>
+						<option{{selected status 'SMS'}}>SMS</option>
 					</select>
 				</p>
 			</form>
