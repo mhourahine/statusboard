@@ -1,0 +1,72 @@
+<head>
+  <title>Status Board</title>
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="navbar-inner">
+			<a class="brand" href="#">Status Board</a>
+			<div class="navbar-text pull-right">{{loginButtons}}</div>
+		</div>
+	</div>
+	{{> status_board}}
+</body>
+
+<template name="status_board">
+	<div class="board">
+		{{#each people}}  
+			{{> person}}
+		{{/each}}
+		{{#if new_user}}
+			{{> add_new_user}}
+		{{/if}}
+	</div>
+	{{!-- <div style="clear:both"><button id="remove_all" class="btn btn-small">Remove All</button></div> --}}
+</template>
+
+<template name="person">
+	<div class="person">
+		<div class="avatar">
+			{{#if avatar_url}}
+				<img class="img-circle" src="{{avatar_url}}" />
+			{{else}}
+				<img class="img-circle" data-src="holder.js/100x100" >
+			{{/if}}
+		</div>
+		<p class="name"><strong>{{first_name}}</strong></p> 
+		<div class="status">
+		{{#if isCurrentUser}}
+			<form class='form-inline'>
+				<p>
+					<label class="inline" for="status">Status:</label>
+					<select class="input-small" id="status">
+						<option{{selected status 'Online'}}>Online</option>
+						<option{{selected status 'Busy'}}>Busy</option>
+						<option{{selected status 'Deep in thought'}}>Deep in thought</option>
+						<option{{selected status 'On A Call'}}>On A Call</option>
+						<option{{selected status 'Offline'}}>Offline</option>
+					</select>
+				</p>
+
+				<p>
+					<label class="inline" for="contactOn">Hit me up on:</label>
+					<select class="input-small" id="contactOn">
+						<option>Hipchat</option>
+						<option>Skype</option>
+						<option>Email</option>
+						<option>iMessage</option>
+						<option>SMS</option>
+					</select>
+				</p>
+			</form>
+		{{else}}
+			<p>Status: <strong>{{status}}</strong><br>
+			Hit me up on: <strong>{{contactOn}}</strong></p>
+		{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="add_new_user">
+	<button class='btn' id="add_yourself">Add Yourself</button>
+</template>
